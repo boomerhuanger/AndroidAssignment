@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                     FragmentTransaction ft = fm.beginTransaction();
                     fragment = new AlbumFragment(position);
                     //android.R.id.content gives you the root element of a view without using its name etc
-                    ft.add(android.R.id.content,fragment,"Album Fragment");
+                    ft.add(R.id.fragment_layout, fragment, "Album Fragment");
                     //AlbumAdapter albumAdapter = new AlbumAdapter();
                     //ListView albumListView = findViewById(R.id.listView1);
                     //albumListView.setAdapter(albumAdapter);
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                     TextView title1 = findViewById(R.id.title1);
                     Log.i("Position is ", Integer.toString(position));
                     String titleString = "Album ID: " + Integer.toString(position + 1);
-                    title.setText(titleString);
+                    //title.setText(titleString);
 
                 }
             }
