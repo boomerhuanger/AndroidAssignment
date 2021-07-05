@@ -13,6 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.LazyHeaders;
@@ -52,8 +54,17 @@ public class AlbumAdapter extends ArrayAdapter<Album> {
         Album album = new Album(id, albumId, title, url, thumbnailUrl);
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        convertView = inflater.inflate(mResource, parent, false);
-        image = convertView.findViewById(R.id.albumImage);
+
+        ViewHolder holder = null;
+
+        if (convertView == null) {
+            convertView = inflater.inflate(mResource, parent, false);
+            holder = createViewHolderFrom(convertView);
+
+        }
+
+
+        holder.image = convertView.findViewById(R.id.albumImage);
 
         Log.d("Image", image.toString());
         /*Bitmap bimage = null;
@@ -75,7 +86,7 @@ public class AlbumAdapter extends ArrayAdapter<Album> {
         image.setImageBitmap(bimage);
         //image.setVisibility(View.VISIBLE);*/
 
-        Picasso.get().load(url).into(image);
+        Picasso.get().load(url).into(holder.image);
         Picasso.get().setLoggingEnabled(true);
 
         /*GlideUrl url1 = new GlideUrl(url, new LazyHeaders.Builder()
@@ -89,5 +100,19 @@ public class AlbumAdapter extends ArrayAdapter<Album> {
 
         return convertView;
 
+    }
+
+    private ViewHolder createViewHolderFrom(View view) {
+        ImageView image = (ImageView) view.findViewById(R.id.albumImage);
+
+        return new ViewHolder(image);
+    }
+}
+
+class ViewHolder {
+    ImageView image;
+
+    ViewHolder(ImageView image) {
+        this.image = image;
     }
 }
