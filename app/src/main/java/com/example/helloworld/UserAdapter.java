@@ -12,13 +12,13 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class CustomListAdapter extends ArrayAdapter<User> {
+public class UserAdapter extends ArrayAdapter<User> {
 
     private Context mContext;
 
     int mResource;
 
-    public CustomListAdapter(Context context, int resource, ArrayList<User> users) {
+    public UserAdapter(Context context, int resource, ArrayList<User> users) {
         super(context, resource, users);
         mContext = context;
         mResource = resource;

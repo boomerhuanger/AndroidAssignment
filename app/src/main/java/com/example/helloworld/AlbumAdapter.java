@@ -13,6 +13,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.model.GlideUrl;
+import com.bumptech.glide.load.model.LazyHeaders;
+import com.squareup.picasso.Picasso;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -21,7 +26,6 @@ public class AlbumAdapter extends ArrayAdapter<Album> {
 
     private Context mContext;
     private ImageView image;
-
 
     int mResource;
 
@@ -50,7 +54,9 @@ public class AlbumAdapter extends ArrayAdapter<Album> {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
         image = convertView.findViewById(R.id.albumImage);
-        Bitmap bimage = null;
+
+        Log.d("Image", image.toString());
+        /*Bitmap bimage = null;
 
         Log.d("Got here", "Got here");
 
@@ -67,7 +73,15 @@ public class AlbumAdapter extends ArrayAdapter<Album> {
 
 
         image.setImageBitmap(bimage);
-        image.setVisibility(View.VISIBLE);
+        //image.setVisibility(View.VISIBLE);*/
+
+        Picasso.get().load(url).into(image);
+        Picasso.get().setLoggingEnabled(true);
+
+        /*GlideUrl url1 = new GlideUrl(url, new LazyHeaders.Builder()
+                .addHeader("User-Agent", "your-user-agent")
+                .build());
+        Glide.with(getContext()).load(url1).into(image);*/
 
 
 
