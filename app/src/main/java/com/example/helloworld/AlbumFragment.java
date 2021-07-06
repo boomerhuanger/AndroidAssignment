@@ -56,6 +56,7 @@ public class AlbumFragment extends Fragment
 
         //ListView mListView = (ListView) findViewById(R.id.listView1);
 
+
         view = inflater.inflate(R.layout.album_list, container, false);
 
         getPhotos();
@@ -74,7 +75,7 @@ public class AlbumFragment extends Fragment
             @Override
             public void onItemClick(AdapterView<?> parent, View view1, int position, long id) {
                 Log.d("Album fragment", "In album fragment");
-                view.setVisibility(View.INVISIBLE);
+                /*view.setVisibility(View.INVISIBLE);
                 Log.i("Touch", "Touched the screen");
                 Log.i("Position in list", Integer.toString(position));
                 FragmentManager fm = getFragmentManager();
@@ -95,7 +96,7 @@ public class AlbumFragment extends Fragment
                     //String titleString = "Album ID: " + Integer.toString(position + 1);
                     //title.setText(titleString);
                 }
-
+                */
 
 
             }

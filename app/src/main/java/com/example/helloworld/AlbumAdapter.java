@@ -90,13 +90,13 @@ public class AlbumAdapter extends ArrayAdapter<Album> {
         image.setImageBitmap(bimage);
         //image.setVisibility(View.VISIBLE);*/
 
-        //Picasso.get().load(url).into(holder.image);
-        //Picasso.get().setLoggingEnabled(true);
+        Picasso.get().load(thumbnailUrl).into(holder.image);
+        Picasso.get().setLoggingEnabled(true);
 
-        GlideUrl url1 = new GlideUrl(url, new LazyHeaders.Builder()
+        /*GlideUrl url1 = new GlideUrl(thumbnailUrl, new LazyHeaders.Builder()
                 .addHeader("User-Agent", "your-user-agent")
                 .build());
-        Glide.with(mContext).load(url1).into(holder.image);
+        Glide.with(mContext).load(url1).into(holder.image);*/
 
 
 
