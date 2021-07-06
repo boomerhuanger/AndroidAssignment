@@ -28,6 +28,7 @@ public class AlbumAdapter extends ArrayAdapter<Album> {
 
     private Context mContext;
     private ImageView image;
+    private ViewHolder holder;
 
     int mResource;
 
@@ -55,18 +56,21 @@ public class AlbumAdapter extends ArrayAdapter<Album> {
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
 
-        ViewHolder holder = null;
+        //ViewHolder holder = null;
 
         if (convertView == null) {
             convertView = inflater.inflate(mResource, parent, false);
-            holder = createViewHolderFrom(convertView);
+            holder = new ViewHolder(convertView);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
 
         }
 
 
-        holder.image = convertView.findViewById(R.id.albumImage);
 
-        Log.d("Image", image.toString());
+
+        //Log.d("Image", holder.image.toString());
         /*Bitmap bimage = null;
 
         Log.d("Got here", "Got here");
@@ -86,13 +90,13 @@ public class AlbumAdapter extends ArrayAdapter<Album> {
         image.setImageBitmap(bimage);
         //image.setVisibility(View.VISIBLE);*/
 
-        Picasso.get().load(url).into(holder.image);
-        Picasso.get().setLoggingEnabled(true);
+        //Picasso.get().load(url).into(holder.image);
+        //Picasso.get().setLoggingEnabled(true);
 
-        /*GlideUrl url1 = new GlideUrl(url, new LazyHeaders.Builder()
+        GlideUrl url1 = new GlideUrl(url, new LazyHeaders.Builder()
                 .addHeader("User-Agent", "your-user-agent")
                 .build());
-        Glide.with(getContext()).load(url1).into(image);*/
+        Glide.with(mContext).load(url1).into(holder.image);
 
 
 
@@ -101,18 +105,13 @@ public class AlbumAdapter extends ArrayAdapter<Album> {
         return convertView;
 
     }
-
-    private ViewHolder createViewHolderFrom(View view) {
-        ImageView image = (ImageView) view.findViewById(R.id.albumImage);
-
-        return new ViewHolder(image);
-    }
 }
 
-class ViewHolder {
+class ViewHolder extends RecyclerView.ViewHolder {
     ImageView image;
 
-    ViewHolder(ImageView image) {
-        this.image = image;
+    ViewHolder(View view) {
+        super(view);
+        this.image = (ImageView) view.findViewById(R.id.albumImage);
     }
 }

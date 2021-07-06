@@ -33,7 +33,7 @@ public class UserAdapter extends ArrayAdapter<User> {
         int id = getItem(position).getId();
         Integer.toString(id);
 
-        User user = new User(id, name, email, phone);
+        //User user = new User(id, name, email, phone);
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
