@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="text"
+            type="String" />
+        <variable
+            name="image"
+            type="String" />
+    </data>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="550dp"
+        android:orientation="vertical"
+        android:theme="@style/BlueTileWhiteText">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/albumImage"
+            android:paddingLeft="10dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/albumText"
+            android:gravity="right"
+            android:layout_marginLeft="150dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:text="@{text}" />
+    </FrameLayout>
+</layout>

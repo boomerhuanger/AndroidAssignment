@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/my_nav"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/userFragment">
+
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.example.helloworld.UserFragment"
+        android:label="UserFragment"
+        tools:layout="@layout/user_list">
+        <action
+            android:id="@+id/action_userFragment_to_albumFragment"
+            app:destination="@id/albumFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumFragment"
+        android:name="com.example.helloworld.AlbumFragment"
+        android:label="AlbumFragment"
+        tools:layout="@layout/album_list">
+        <action
+            android:id="@+id/action_albumFragment_to_thumbnailFragment"
+            app:destination="@id/thumbnailFragment" />
+        <argument
+            android:name="position"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/thumbnailFragment"
+        android:name="com.example.sampleapp.ThumbnailFragment"
+        android:label="ThumbnailFragment"
+        tools:layout="@layout/thumbnail_info" >
+        <argument
+            android:name="album"
+            app:argType="com.example.sampleapp.models.Album" />
+    </fragment>
+</navigation>
